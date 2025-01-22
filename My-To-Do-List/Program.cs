@@ -5,6 +5,9 @@ var app = builder.Build();
 
 var todos = new List<Todo>();
 
+// return all todos
+app.MapGet("/todos", () => todos);
+
 // returns either 200 with a Todo in the body, or 404
 app.MapGet("/todos/{id}", Results<Ok<Todo>, NotFound> (int id) => 
 {
