@@ -24,6 +24,13 @@ app.MapPost("/todos", (Todo task) =>
     return TypedResults.Created("/todos/{id}", task);
 });
 
+// delete a task
+app.MapDelete("todos/{id}", (int id) => 
+{
+    todos.RemoveAll(t => id == t.Id);
+    return TypedResults.NoContent();
+});
+
 app.Run();
 
 
